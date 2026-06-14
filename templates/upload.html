@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="animate-fade-in" style="max-width: 800px; margin: 0 auto;">
+    <h2 class="mb-4">Syllabus Upload</h2>
+    
+    <form method="POST" enctype="multipart/form-data" class="glass-panel" style="padding: 2rem;">
+        <p class="mb-4" style="color: var(--text-muted);">Upload your course syllabus (PDF format) to let our engine perform a gap analysis against industry standards.</p>
+        
+        <div class="upload-area mb-4" onclick="document.getElementById('fileUpload').click()">
+            <h3 style="color: var(--primary); margin-bottom: 10px;">Click to Browse or Drag & Drop</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Supports .pdf files up to 10MB</p>
+            <input type="file" id="fileUpload" name="file" accept=".pdf" style="display: none;" onchange="updateFileName()">
+            <div id="fileNameDisplay" class="mt-4" style="font-weight: 600; color: #fff;"></div>
+        </div>
+        
+        <div style="text-align: right;">
+            <button type="submit" class="btn btn-primary">Process Syllabus</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function updateFileName() {
+        const fileInput = document.getElementById('fileUpload');
+        const display = document.getElementById('fileNameDisplay');
+        if (fileInput.files.length > 0) {
+            display.textContent = 'Selected: ' + fileInput.files[0].name;
+        }
+    }
+</script>
+{% endblock %}

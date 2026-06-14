@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="glass-panel auth-box animate-fade-in" style="text-align: center;">
+        <h1 class="mb-4">Welcome to HCET</h1>
+        <p class="mb-4" style="color: var(--text-muted);">Empowering Educational Equity</p>
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-block mb-4">Student Login</a>
+        <a href="{{ url_for('admin_login') }}" class="btn btn-block" style="border: 1px solid var(--primary); color: var(--text-main);">Admin Login</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{
+  "Python": {"weight": 1.0, "category": "Programming"},
+  "SQL": {"weight": 0.9, "category": "Database"},
+  "Machine Learning": {"weight": 0.8, "category": "Data Science"},
+  "Cloud Computing": {"weight": 0.8, "category": "Infrastructure"},
+  "System Design": {"weight": 0.9, "category": "Architecture"},
+  "Communication": {"weight": 0.7, "category": "Soft Skills"}
+}

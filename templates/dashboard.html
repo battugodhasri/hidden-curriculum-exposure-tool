@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <div class="flex-between mb-4">
+        <h2>Dashboard</h2>
+        {% if is_admin %}
+        <span class="badge" style="background: var(--danger); padding: 5px 10px; border-radius: 20px;">Admin Mode</span>
+        {% else %}
+        <span>Welcome back, <strong>{{ user.name }}</strong>!</span>
+        {% endif %}
+    </div>
+
+    {% if is_admin %}
+    <div class="glass-panel p-4">
+        <h3>Admin Dashboard</h3>
+        <p class="mt-4">You have access to all student records and system configurations.</p>
+        <!-- Add hypothetical admin controls here -->
+    </div>
+    {% else %}
+    <div class="grid grid-cols-3">
+        <div class="glass-panel metric-card">
+            <h3>Career Readiness</h3>
+            <div class="value">{{ user.metrics.career_readiness }}<span style="font-size:1.5rem">%</span></div>
+        </div>
+        <div class="glass-panel metric-card">
+            <h3>Roadmap Progress</h3>
+            <div class="value accent">{{ user.metrics.roadmap_progress }}<span style="font-size:1.5rem">%</span></div>
+        </div>
+        <div class="glass-panel metric-card">
+            <h3>Weekly Streak</h3>
+            <div class="value" style="color: var(--secondary);">{{ user.metrics.weekly_streak }} <span style="font-size:1.2rem">wks</span></div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 mt-4">
+        <div class="glass-panel p-4" style="padding: 1.5rem;">
+            <h3>Action Items</h3>
+            <div class="mt-4">
+                <p><strong>Current Task:</strong> {{ user.metrics.current_week_task }}</p>
+                <div class="mt-4">
+                    {% if user.metrics.career_readiness == 0 %}
+                    <a href="{{ url_for('upload') }}" class="btn btn-primary">Upload Syllabus</a>
+                    {% else %}
+                    <a href="{{ url_for('quiz') }}" class="btn btn-primary">Take Assessment</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="glass-panel p-4" style="padding: 1.5rem;">
+            <h3>Weak Areas</h3>
+            <ul class="mt-4" style="list-style-position: inside; color: var(--danger);">
+                {% if user.metrics.weak_areas %}
+                    {% for area in user.metrics.weak_areas %}
+                        <li>{{ area }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li style="color: var(--text-muted);">None identified yet. Upload syllabus first.</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

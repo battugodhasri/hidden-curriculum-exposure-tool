@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="animate-fade-in" style="max-width: 800px; margin: 0 auto;">
+    <div class="flex-between mb-4">
+        <h2>Downloadable Report</h2>
+        <button class="btn btn-primary" onclick="generatePDF()">Download PDF</button>
+    </div>
+
+    <!-- The section that gets exported to PDF -->
+    <div id="report-content" class="glass-panel" style="background: #ffffff; color: #000; padding: 3rem; border-radius: 0;">
+        <h1 style="color: #1e1b4b; text-align: center; margin-bottom: 5px;">Hidden Curriculum Exposure Tool</h1>
+        <h3 style="color: #64748b; text-align: center; margin-bottom: 2rem;">Educational Equity Report</h3>
+        
+        <hr style="border: 0; border-top: 1px solid #cbd5e1; margin-bottom: 2rem;">
+        
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #0f172a;">Student Profile</h3>
+            <p><strong>Name:</strong> {{ user.name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Branch:</strong> {{ user.branch }}</p>
+            <p><strong>Year:</strong> {{ user.year }}</p>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #0f172a;">Key Metrics</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li><strong>Career Readiness:</strong> {{ user.metrics.career_readiness }}%</li>
+                <li><strong>Roadmap Progress:</strong> {{ user.metrics.roadmap_progress }}%</li>
+                <li><strong>Weekly Streak:</strong> {{ user.metrics.weekly_streak }} weeks</li>
+            </ul>
+        </div>
+        
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #0f172a;">Gap Analysis Summary</h3>
+            {% if user.gap_analysis %}
+            <p><strong>Missing Skills Outline:</strong> {{ user.gap_analysis.missing_percentage }}% of required skills are missing based on syllabus evaluation.</p>
+            <p><strong>Identified Weak Areas:</strong> 
+                {% for w in user.metrics.weak_areas %}{{ w }}{% if not loop.last %}, {% endif %}{% endfor %}
+            </p>
+            {% else %}
+            <p>No gap analysis performed yet.</p>
+            {% endif %}
+        </div>
+        
+        <div style="margin-bottom: 2rem;">
+            <h3 style="color: #0f172a;">Assessment Performance</h3>
+            {% if user.quiz_scores %}
+            <ul>
+                {% for score in user.quiz_scores %}
+                <li>Assessment {{ loop.index }}: {{ score.score }}/{{ score.total }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No assessments completed yet.</p>
+            {% endif %}
+        </div>
+        
+        <div style="margin-top: 4rem; text-align: center; color: #94a3b8; font-size: 0.8rem;">
+            <p>Generated on {{ range(1, 28) | random }} April 2026</p>
+            <p>Hidden Curriculum Exposure Tool - Empowering Students</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

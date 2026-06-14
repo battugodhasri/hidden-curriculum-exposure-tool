@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <div class="flex-between mb-4">
+        <h2>Gap Analysis</h2>
+        <a href="{{ url_for('roadmap') }}" class="btn btn-primary">Generate Roadmap</a>
+    </div>
+
+    {% if user.gap_analysis %}
+    <div class="grid grid-cols-2">
+        <div class="glass-panel">
+            <h3 style="padding: 1.5rem 1.5rem 0; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">Skill Proficiency Analysis</h3>
+            <div class="chart-container">
+                <canvas id="gapAnalysisChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="glass-panel">
+            <h3 style="padding: 1.5rem 1.5rem 0; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">Missing Skills Summary</h3>
+            <div style="text-align: center; margin-top: 1rem;">
+                <h4 id="overall-missing" style="color: var(--danger); font-size: 1.2rem;"></h4>
+            </div>
+            <div class="chart-container" style="height: 300px;">
+                <canvas id="gapPieChart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="glass-panel mt-4" style="padding: 1.5rem;">
+        <h3>Career Guidance</h3>
+        <p class="mt-4" style="color: var(--text-muted);">Based on your profile, the following career paths match your skills:</p>
+        <div class="grid grid-cols-3 mt-4">
+            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary);">
+                <h4>Data Science</h4>
+                <p style="font-size: 0.9rem; margin-top: 5px;">High match with Python, SQL</p>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--secondary);">
+                <h4>Web Development</h4>
+                <p style="font-size: 0.9rem; margin-top: 5px;">Needs improvement in Cloud</p>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent);">
+                <h4>Cloud Engineer</h4>
+                <p style="font-size: 0.9rem; margin-top: 5px;">Focus on System Design next</p>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="glass-panel p-4" style="text-align: center; padding: 3rem;">
+        <h3 style="color: var(--text-muted);">No gap analysis performed yet.</h3>
+        <a href="{{ url_for('upload') }}" class="btn btn-primary mt-4">Upload Syllabus First</a>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Only load charts script on gap page -->
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+{% endblock %}

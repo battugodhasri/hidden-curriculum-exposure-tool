@@ -1,0 +1,81 @@
+{
+    "u_1": {
+        "name": "Battu Godha Sri",
+        "email": "24ve1a05ep@sreyas.ac.in",
+        "password": "Godha@123",
+        "branch": "CSE",
+        "year": "4",
+        "metrics": {
+            "career_readiness": 84,
+            "roadmap_progress": 20,
+            "weekly_streak": 1,
+            "weak_areas": [
+                "System Design"
+            ],
+            "current_week_task": "Week 1: Fundamentals"
+        },
+        "extracted_skills": [
+            "Python",
+            "SQL",
+            "Machine Learning",
+            "Cloud Computing",
+            "Communication"
+        ],
+        "gap_analysis": {
+            "found": [
+                "Python",
+                "SQL",
+                "Machine Learning",
+                "Cloud Computing",
+                "Communication"
+            ],
+            "missing": [
+                "System Design"
+            ],
+            "missing_percentage": 16
+        },
+        "quiz_scores": [
+            {
+                "score": 2,
+                "total": 3
+            }
+        ]
+    },
+    "u_2": {
+        "name": "Yashwanth",
+        "email": "24ve1a05eq@sreyas.ac.in",
+        "password": "yashwanth",
+        "branch": "CSE",
+        "year": "2",
+        "metrics": {
+            "career_readiness": 84,
+            "roadmap_progress": 0,
+            "weekly_streak": 1,
+            "weak_areas": [
+                "System Design"
+            ],
+            "current_week_task": "Week 1: Fundamentals"
+        },
+        "extracted_skills": [
+            "Python",
+            "SQL",
+            "Machine Learning",
+            "Cloud Computing",
+            "Communication"
+        ],
+        "gap_analysis": {
+            "found": [
+                "Python",
+                "SQL",
+                "Machine Learning",
+                "Cloud Computing",
+                "Communication"
+            ],
+            "missing": [
+                "System Design"
+            ],
+            "missing_percentage": 16
+        },
+        "quiz_scores": []
+    }
+}

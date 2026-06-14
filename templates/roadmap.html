@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="animate-fade-in" style="max-width: 800px; margin: 0 auto;">
+    <h2 class="mb-4">Your Personalized Roadmap</h2>
+    <p style="color: var(--text-muted); margin-bottom: 2rem;">Generated based on the gaps identified from your syllabus. Track your progress weekly.</p>
+    
+    <div class="roadmap-timeline">
+        <!-- Week 1 - Completed -->
+        <div class="glass-panel week-card completed">
+            <div>
+                <span class="badge" style="color: var(--accent); font-weight: bold; font-size: 0.9rem;">COMPLETED</span>
+                <h3 class="mt-4">Week 1: Python & Statistics Basics</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Data types, loops, basic descriptive statistics.</p>
+            </div>
+            <div>
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold;">✓</div>
+            </div>
+        </div>
+        
+        <!-- Week 2 - Completed -->
+        <div class="glass-panel week-card completed">
+            <div>
+                <span class="badge" style="color: var(--accent); font-weight: bold; font-size: 0.9rem;">COMPLETED</span>
+                <h3 class="mt-4">Week 2: Data Cleaning & Pandas</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Handling missing values, data frames manipulation.</p>
+            </div>
+            <div>
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold;">✓</div>
+            </div>
+        </div>
+
+        <!-- Week 3 - Active -->
+        <div class="glass-panel week-card active">
+            <div>
+                <span class="badge" style="color: var(--primary); font-weight: bold; font-size: 0.9rem;">CURRENT</span>
+                <h3 class="mt-4">Week 3: SQL & Database Queries</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Relational models, JOINs, group functions.</p>
+            </div>
+            <div>
+                <a href="{{ url_for('quiz') }}" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Take Quiz</a>
+            </div>
+        </div>
+
+        <!-- Week 4 - Upcoming -->
+        <div class="glass-panel week-card" style="opacity: 0.6; border-left-color: transparent;">
+            <div>
+                <span class="badge" style="color: var(--text-muted); font-weight: bold; font-size: 0.9rem;">UPCOMING</span>
+                <h3 class="mt-4">Week 4: Machine Learning Fundamentals</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Supervised learning, regression vs classification.</p>
+            </div>
+        </div>
+        
+        <!-- Week 5 - Upcoming -->
+        <div class="glass-panel week-card" style="opacity: 0.6; border-left-color: transparent;">
+            <div>
+                <span class="badge" style="color: var(--text-muted); font-weight: bold; font-size: 0.9rem;">UPCOMING</span>
+                <h3 class="mt-4">Week 5: Model Building & Evaluation</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">Cross-validation, accuracy, precision/recall.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="animate-fade-in" style="max-width: 800px; margin: 0 auto;">
+    <h2 class="mb-4">Weekly Assessment</h2>
+    
+    {% if score is not none %}
+    <div class="glass-panel" style="padding: 2rem; border-left: 4px solid var(--accent); margin-bottom: 2rem;">
+        <h3 style="color: var(--accent);">Score: {{ score }}/{{ total }}</h3>
+        <p class="mt-4">Assessment complete. Check your roadmap for the next active week.</p>
+        <div class="mt-4">
+            <a href="{{ url_for('roadmap') }}" class="btn btn-primary">Return to Roadmap</a>
+        </div>
+    </div>
+    {% endif %}
+
+    <form method="POST" class="glass-panel" style="padding: 2rem;">
+        {% for q in questions %}
+        <div class="mb-4" style="border-bottom: 1px solid var(--glass-border); padding-bottom: 1.5rem;">
+            <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem;">Q{{ loop.index }}: {{ q.q }}</p>
+            {% set q_index = loop.index0 %}
+            {% for opt in q.options %}
+            <div style="margin-bottom: 0.5rem;">
+                <label style="display: flex; align-items: center; cursor: pointer; color: var(--text-main);">
+                    <input type="radio" name="q{{ q_index }}" value="{{ opt }}" required style="margin-right: 10px; cursor: pointer;">
+                    <span 
+                        {% if score is not none %}
+                            {% if opt == q.ans %}style="color: var(--accent); font-weight: bold;"{% endif %}
+                        {% endif %}
+                    >
+                        {{ opt }}
+                    </span>
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        
+        {% if score is none %}
+        <button type="submit" class="btn btn-primary mt-4">Submit Assessment</button>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
